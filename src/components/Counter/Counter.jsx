@@ -7,7 +7,7 @@ const colors = {
   red: 'rgb(239, 68, 68)',
 };
 
-const initialState = { count: 0, currentColor: yellow };
+const initialState = { count: 0, currentColor: '' };
 
 const counterReducer = (state, action) => {
   switch (action.type) {
@@ -27,18 +27,18 @@ export default function Counter() {
 
 
   useEffect(() => {
-    if (count === 0) {
+    if (counter.count === 0) {
       dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.yellow } });
     }
     
-    if (count > 0) {
+    if (counter.count > 0) {
       dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.green } });
     }
     
-    if (count < 0) {
+    if (counter.count < 0) {
       dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.red } });
     }
-  }, [count]);
+  }, [counter.count]);
 
   const increment = () => {
     dispatch({ type: 'INCREMENT' });
@@ -54,7 +54,7 @@ export default function Counter() {
 
   return (
     <main className={styles.main}>
-      <h1 style={{ color: currentColor }}>{count}</h1>
+      <h1 style={{ color: counter.currentColor }}>{counter.count}</h1>
       <div>
         <button
           type="button"
