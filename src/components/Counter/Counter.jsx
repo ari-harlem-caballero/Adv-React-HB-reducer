@@ -9,14 +9,20 @@ const colors = {
 
 const initialState = { count: 0, currentColor: yellow };
 
-const counterReducer = (state, action) => {};
+const counterReducer = (state, action) => {
+  switch (action.type) {
+    case 'COLOR_CHANGE':
+      return { ...state, currentColor: action.payload.currentColor };
+  }
+};
 
 export default function Counter() {
   const [counter, dispatch] = useReducer(counterReducer, initialState);
 
+
   useEffect(() => {
     if (count === 0) {
-      setCurrentColor(colors.yellow);
+      dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.yellow } });
     }
 
     if (count > 0) {
