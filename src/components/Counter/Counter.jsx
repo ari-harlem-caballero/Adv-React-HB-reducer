@@ -13,6 +13,8 @@ const counterReducer = (state, action) => {
   switch (action.type) {
     case 'COLOR_CHANGE':
       return { ...state, currentColor: action.payload.currentColor };
+    case 'INCREMENT':
+      return { ...state, count: state.count + 1 };
   }
 };
 
@@ -35,15 +37,15 @@ export default function Counter() {
   }, [count]);
 
   const increment = () => {
-    setCount((prevState) => prevState + 1);
+    dispatch({ type: 'INCREMENT' });
   };
 
   const decrement = () => {
-    setCount((prevState) => prevState - 1);
+    dispatch({ type: 'DECREMENT' });
   };
 
   const reset = () => {
-    setCount(0);
+    dispatch({ type: 'RESET' });
   };
 
   return (
