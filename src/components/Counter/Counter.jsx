@@ -24,13 +24,13 @@ export default function Counter() {
     if (count === 0) {
       dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.yellow } });
     }
-
+    
     if (count > 0) {
-      setCurrentColor(colors.green);
+      dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.green } });
     }
-
+    
     if (count < 0) {
-      setCurrentColor(colors.red);
+      dispatch({ type: 'COLOR_CHANGE', payload: { currentColor: colors.red } });
     }
   }, [count]);
 
